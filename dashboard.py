@@ -38,10 +38,9 @@ input_data = np.array(marks + [soft_skills, aptitude]).reshape(1, -1)
 if st.sidebar.button("Predict"):
     interview_model, grading_model = load_models()
 
-    interview_pred = interview_model["model"].predict(input_data)[0]
-    interview_label = interview_model["label_encoder"].inverse_transform(
-        [interview_pred]
-    )[0]
+    interview_pred = interview_model.predict(input_data)[0]
+    interview_label = interview_pred
+
 
     grade_pred = grading_model.predict(input_data)[0]
 
